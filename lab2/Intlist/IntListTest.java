@@ -66,4 +66,20 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3), A);
     }
 
+    @Test
+    public void testIncrList() {
+        IntList L = IntList.of(1, 2, 3);
+        int x = 5;
+        IntList exp = IntList.of(6, 7, 8);
+        assertEquals(exp, IntList.incrList(L, x));
+    }
+
+    @Test
+    public void testDincrList() {
+        IntList L = IntList.of(1, 2, 3);
+        int x = 5;
+        IntList exp = IntList.of(6, 7, 8);
+        assertEquals(exp, IntList.dincrList(L, x));
+    }
+
 }

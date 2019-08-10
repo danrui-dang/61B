@@ -128,6 +128,66 @@ public class IntList {
         else return new IntList(A.first, catenate(A.rest, B));
     }
 
+    /** Return the value of ith element of this IntList. */
+    public int get(int i) {
+        int res;
+        IntList ptr = this;
+        if(i >= this.size())
+            return -1;
+        while(i > 0) {
+            ptr = ptr.rest;
+            i--;
+        }
+        res = ptr.first;
+        return res;
+    }
+
+    /** Return the size of this IntList. */
+    public int size() {
+        if(rest == null) return 1;
+        return 1 + this.rest.size();
+    }
+
+    /** Return the size of the list using no recursion! */
+    public int iterativeSize() {
+        IntList p = this;
+        int totalSize = 0;
+        while (p != null) {
+            totalSize += 1;
+            p = p.rest;
+        }
+        return totalSize;
+    }
+
+    public static IntList incrList(IntList L, int x) {
+        /* Your code here. */
+        /** iteratively
+         IntList Q = new IntList();
+         IntList QHeader = Q;
+         IntList ptr = L;
+         while(ptr.rest != null) {
+         Q.first = ptr.first + x;
+         Q.rest = new IntList();
+         ptr = ptr.rest;
+         }
+         Q.first = ptr.first + x;
+         return QHeader;
+         */
+        if(L == null) return L;
+        else return new IntList(L.first + x, incrList(L.rest, x));
+    }
+
+    /** Returns an IntList identical to L, but with
+     * each element incremented by x. Not allowed to use
+     * the 'new' keyword. */
+    public static IntList dincrList(IntList L, int x) {
+        /* Your code here. */
+        if(L == null) return L;
+        L.first = L.first + x;
+        L.rest = dincrList(L.rest, x);
+        return L;
+    }
+
 
 
 
